@@ -1,4 +1,4 @@
-#Github.com/devsavegrootin
+#Github.com/savegrootin
 
 from pyrogram.errors import FloodWait, InviteHashInvalid, InviteHashExpired, UserAlreadyParticipant
 from telethon import errors, events
