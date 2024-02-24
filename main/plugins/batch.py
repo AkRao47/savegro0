@@ -172,8 +172,13 @@ async def _batch(event):
 
 @savegroot.on(events.callbackquery.CallbackQuery(data="cancel"))
 async def cancel(event):
-    ids.clear()
-    batch.clear()
+     chat_user_id = f'{event.chat_id}_{event.sender_id}'
+    if chat_user_id in batch:
+        ids.clear()
+        batch.remove(chat_user_id)
+        await event.respond("Batch process cancelled.")
+    else:
+        await event.respond("No active batch process to cancel.")
 
     
 async def run_batch(userbot, client, sender, countdown, link):
