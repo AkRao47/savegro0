@@ -120,7 +120,7 @@ async def _batch(event):
     '''
     if event.sender_id not in AUTHORIZED_USERS:
         return await event.respond("You are not authorized to use this command. Contact @savegroot_bot to get authorised.")
-    
+
     s = False
     if f'{event.sender_id}' in batch:
         return await event.reply("You've already started one batch, wait for it to complete !")
@@ -172,10 +172,10 @@ async def _batch(event):
 
 @savegroot.on(events.callbackquery.CallbackQuery(data="cancel"))
 async def cancel(event):
-     ids.clear()
+    ids.clear()
     batch.clear()
 
-    
+
 async def run_batch(userbot, client, sender, countdown, link):
     for i in range(len(ids)):
         timer = 6
@@ -193,7 +193,7 @@ async def run_batch(userbot, client, sender, countdown, link):
             timer = 8
         elif i < 1000000: 
             timer = 10
-        
+
         if 't.me/c/' not in link:
             timer = 1 if i < 500 else 2
         try: 
@@ -264,12 +264,11 @@ async def start_command(event):
         caption=TEXT,
         buttons=buttons
     )
-            
+
 TEXTING = """
 ```
 Execute /batch command only when you 100% sure.
 Bcz /cancel event is removed to make bot work perfectly.
 Thanks - savegroot
-
 ```
 """
